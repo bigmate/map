@@ -10,6 +10,10 @@ func (m Map[K, V]) Get(key K) V {
 	return m[key]
 }
 
+func (m Map[K, V]) Del(key K) {
+	delete(m, key)
+}
+
 func (m Map[K, V]) GetOrDefault(key K, val V) V {
 	if m.Has(key) {
 		return m.Get(key)
