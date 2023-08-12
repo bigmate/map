@@ -61,3 +61,13 @@ func FromSlice[K comparable, V any](arr []V, lambda func(V) K) Map[K, V] {
 
 	return m
 }
+
+func FromSlicePtr[K comparable, V any](arr []V, lambda func(*V) K) Map[K, *V] {
+	m := New[K, *V](0)
+
+	for _, v := range arr {
+		m.Set(lambda(&v), &v)
+	}
+
+	return m
+}
